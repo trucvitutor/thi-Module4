@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Quốc Gia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="row mx-5">
+    <h1>Danh sách Sản Phẩm</h1>
+    <table class="table table-bordered table-hover" border="1px">
+        <thead>
+        <tr>
+            <th>stt</th>
+            <th>chọn xóa</th>
+            <th>tên sản phẩm</th>
+            <th>giá bắt đầu</th>
+            <th>loại sản phẩm</th>
+            <th>tình trạng</th>
+            <th>hành động</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${product}">
+            <td th:text="${item.id}"></td>
+            <td>
+                <a class="btn btn-primary" th:href="@{'/remove/'+ ${item.getId}}">xóa</a>
+            </td>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.category.getName()}"></td>
+            <td th:text="${item.status}"></td>
+
+            <td>
+                <a class="btn btn-primary" th:href="@{'/update/'+ ${item.getId()}}">sửa</a>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <tr>
+        <td>
+            <a class="btn btn-primary" th:href="@{/create}">
+                Thêm
+            </a>
+        </td>
+    </tr>
+</div>
+
+<!-- Bootstrap JS (optional) -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
